@@ -29,11 +29,11 @@ services:
             - appdata
         depends_on:
           - mysql
-          #- beanstalkd
+          - beanstalkd
           - appdata
         links:
             - "mysql:TmsMysql"
-            #- "beanstalkd:TmsBeanstalkd"
+            - "beanstalkd:TmsBeanstalkd"
 
     appdata:
         container_name: TmsApp
