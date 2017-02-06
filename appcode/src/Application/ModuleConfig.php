@@ -23,11 +23,13 @@ class ModuleConfig
         return [
             'dependencies' => [
                 'invokables' => [
-                    
+                    //
                 ],
                 'factories' => [
                     \Application\Action\PingAction::class => \Application\Action\PingActionFactory::class,
                     \Application\Action\HomePageAction::class => \Application\Action\HomePageFactory::class,
+                    \Application\Action\Dashboard::class => \Application\Action\DashboardFactory::class,
+                    \Application\Action\Login::class => \Application\Action\LoginFactory::class,
 
                     \Application\Session\CreateSession::class => \Application\Session\CreateSessionFactory::class,
                 ],
@@ -45,12 +47,18 @@ class ModuleConfig
                     'middleware' =>  \Application\Action\PingAction::class,
                     'allowed_methods' => ['GET'],
                 ],
-                // [
-                //     'name' => 'ui.dashboard',
-                //     'path' => '/dashboard',
-                //     'middleware' =>  Presentation\Ui\Dashboard::class,
-                //     'allowed_methods' => ['GET'],
-                // ],
+                [
+                    'name' => 'login',
+                    'path' => '/login',
+                    'middleware' =>  \Application\Action\Login::class,
+                    'allowed_methods' => ['GET'],
+                ],
+                [
+                    'name' => 'dashboard',
+                    'path' => '/dashboard',
+                    'middleware' =>  \Application\Action\Dashboard::class,
+                    'allowed_methods' => ['GET'],
+                ],
             ],
             'middleware_pipeline' => [
                 'always' => [
